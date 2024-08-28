@@ -53,7 +53,7 @@ elif menu == "Dashboard Global":
 
     # Cargar datasets necesarios para el Dashboard Global
     df_accesos_velocidad = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')
-    df_ingresos = load_data('Dataset_procesados/ingresos.csv')
+    df_ingresos = load_data('Dataset_procesados/Ingresos.csv')
     df_velocidad = load_data('Dataset_procesados/Velocidad % por prov.csv')
 
     # Filtrar datos de ingresos por año y trimestre

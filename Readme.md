@@ -15,6 +15,7 @@ El repositorio está organizado de la siguiente manera:
 - **`localidades.py`**: Define la función `localidades_dashboard`, que crea el dashboard para el análisis a nivel de localidades.
 - **`img/`**: Carpeta que contiene imágenes usadas en el dashboard, como el fondo y el logo.
 - **`Dataset_procesados/`**: Carpeta que contiene los datasets procesados utilizados en los análisis.
+- **`Notebook/`**: Carpeta que contiene el ETL y Analisis EDA
 
 ## Análisis de Dashboards
 

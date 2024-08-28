@@ -61,7 +61,4 @@ El análisis realizado muestra un panorama claro sobre el acceso a internet y ot
 
 Se recomienda a la empresa utilizar estos insights para ajustar sus estrategias de servicio y orientación a los clientes.
 
----
-
-Este README proporciona una visión general del proyecto y facilita la comprensión del análisis realizado a través de los dashboards y KPIs. Asegúrate de personalizarlo según los detalles específicos de tu implementación y resultados.
-
+Realizado por: Evelyn Perez- Analista de Datos 

@@ -17,6 +17,18 @@ El repositorio está organizado de la siguiente manera:
 - **`Dataset_procesados/`**: Carpeta que contiene los datasets procesados utilizados en los análisis.
 - **`Notebook/`**: Carpeta que contiene el ETL y Analisis EDA
 
+
+## Proceso ETL, EDA y Dashboard
+
+### Proceso ETL
+
+1. **Extracción**: Se recopilaron los datos necesarios desde diversas fuentes, como bases de datos, archivos CSV o APIs.
+2. **Transformación**: Los datos fueron limpiados y transformados para adecuarse a los requisitos del análisis. Esto incluyó el uso de funciones de limpieza, el manejo de valores nulos, y la modificacion de los tiposd e datos.
+3. **Carga**: Los datos transformados se cargaron en un formato adecuado para el análisis, como DataFrames de Pandas.
+
+### Proceso EDA
+El Análisis Exploratorio de Datos (EDA) En esta etapa, se generaron diversas gráficas que permiten visualizar la información de acuerdo a los datasets procesados. Además, se identificaron outliers en algunos de estos conjuntos de datos.
+
 ## Análisis de Dashboards
 
 ### Dashboard Global
@@ -56,6 +68,17 @@ El Dashboard de Localidades proporciona un análisis a nivel de localidades, per
 
 **Visualización**: También se presenta en el Dashboard Global, permitiendo una evaluación rápida del crecimiento en velocidades.
 
+## Dashboard en Streamlit
+
+El dashboard fue desarrollado utilizando Streamlit, lo que permite una visualización interactiva de los datos. La aplicación permite a los usuarios explorar diferentes aspectos del análisis a través de filtros y gráficos interactivos. Entre las características destacadas del dashboard se incluyen:
+
+- **Filtros Interactivos**: Los usuarios pueden seleccionar provincias y localidades para personalizar la visualización de datos.
+- **Visualizaciones**: Incluye gráficos de barras, gráficos de dispersión y gráficos de torta para mostrar la distribución y comparación de los accesos a diferentes tecnologías.
+- **Resumen**: Proporciona un resumen detallado de los insights clave obtenidos a partir del análisis.
+
+Para ver el dashboard en acción, visita el [enlace a la aplicación desplegada](https://proyecto-individual-2-henry-gfargfp6jtyshf9atm5edk.streamlit.app).
+
+
 ## Conclusiones y Recomendaciones
 
 El análisis realizado muestra un panorama claro sobre el acceso a internet y otros servicios de telecomunicaciones en el país. Las visualizaciones destacan áreas clave para la mejora y oportunidades de crecimiento:
@@ -64,5 +87,6 @@ El análisis realizado muestra un panorama claro sobre el acceso a internet y ot
 - **Oportunidades de Crecimiento**: Provincias con un buen crecimiento en el acceso y velocidades, que podrían ser objetivo de estrategias de expansión.
 
 Se recomienda a la empresa utilizar estos insights para ajustar sus estrategias de servicio y orientación a los clientes.
+
 
 Realizado por: Evelyn Perez- Analista de Datos 

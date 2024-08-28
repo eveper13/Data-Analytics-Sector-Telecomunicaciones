@@ -6,6 +6,29 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
+# Estilo CSS para el fondo y el texto
+css = """
+    <style>
+    .main {
+        background-color: #f0f0f0; /* Color de fondo claro */
+        color: #ffffff; /* Color del texto blanco */
+    }
+    .streamlit-expanderHeader {
+        color: #ffffff; /* Color del texto en los encabezados de los expanders */
+    }
+    .stButton>button {
+        background-color: #007bff; /* Color de fondo de los botones */
+        color: white; /* Color del texto de los botones */
+    }
+    .stTextInput>div>input {
+        background-color: #ffffff; /* Color de fondo de los campos de entrada */
+        color: #000000; /* Color del texto en los campos de entrada */
+    }
+    </style>
+"""
+
+# Agregar el CSS a la aplicación
+st.markdown(css, unsafe_allow_html=True)
 
 
 # Menú principal

@@ -6,9 +6,10 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
+
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode()
+            encoded_string = base64.b64encode(image_file.read()).decode()
 
     st.markdown(
         f"""
@@ -22,29 +23,43 @@ def set_background(image_path):
         unsafe_allow_html=True
     )
 
+
 # Set background image
 set_background('img/fondo.jpg') 
 
 # Menú principal
-st.title("Dashboard Global")
+
+st.title("Dashboard De Telecomunicaciones")
 
 menu = st.sidebar.radio("Selecciona una opción", ["Análisis de KPIs", "Dashboard Global", "Dashboard de Provincias", "Dashboard de Localidades"])
 
+
 if menu == "Análisis de KPIs":
-    st.subheader("Selecciona el KPI")
 
-    col1, col2 = st.columns(2)
-    # Cargar y mostrar KPI 1
-    with col1:
-        if st.button("Mostrar KPI 1: Crecimiento de Accesos"):
-            df_provincias = load_data('Dataset_procesados/Penetracion_hogares.csv')
-            kpi_1(df_provincias)
+    st.subheader("Análisis de KPIs")
 
-    # Cargar y mostrar KPI 2
-    with col2:
-        if st.button("Mostrar KPI 2: Crecimiento de Velocidades Promedio"):
-            df_velocidades = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')
-            kpi2(df_velocidades)
+    # Botones para seleccionar KPI
+    selected_kpi = st.radio("Selecciona el KPI a mostrar", ["KPI 1", "KPI 2"])
+
+    if selected_kpi == "KPI 1":
+        st.subheader("KPI 1: Crecimiento de Accesos")
+        df_provincias = load_data('Dataset_procesados/Penetracion_hogares.csv')
+
+        kpi1_result = kpi_1(df_provincias)  # Asegúrate de que kpi_1 devuelva un valor
+        st.metric(label="KPI 1: Crecimiento de Accesos", value=kpi1_result)
+
+        # Descripcion
+        st.write("Aumentar en un 2% el acceso al servicio de internet para el próximo trimestre, cada 100 hogares, por provincia")
+        
+    elif selected_kpi == "KPI 2":
+        st.subheader("KPI 2: Crecimiento de Velocidades Promedio")
+        df_velocidades = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')
+
+        kpi2_result = kpi2(df_velocidades)  # Asegúrate de que kpi2 devuelva un valor
+        st.metric(label="KPI 2: Crecimiento de Velocidades Promedio", value=kpi2_result)
+
+        # Descripcion
+        st.write("Este valor representa el crecimiento promedio en las velocidades de acceso a internet a nivel provincial")
 
 elif menu == "Dashboard Global":
     st.subheader("Dashboard Global")
@@ -77,6 +92,14 @@ elif menu == "Dashboard Global":
                          title=f"Provincias con Menor Promedio de {tecnologia_seleccionada}",
                          height=400)  # Ajusta la altura del gráfico
 
+    # Columna para gráficos Top 10 y Menor Acceso
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(fig_provincias, use_container_width=True)
+    
+    with col2:
+        st.plotly_chart(fig_accesos, use_container_width=True)
+
     # Gráfico de Ingresos
     df_ingresos_grouped = df_ingresos_filtered.groupby(['Año', 'Trimestre'])['Ingresos (miles de pesos)'].sum().reset_index()
     fig_ingresos = px.line(df_ingresos_grouped, x='Trimestre', y='Ingresos (miles de pesos)', color='Año',
@@ -99,23 +122,33 @@ elif menu == "Dashboard Global":
                      title="Distribución de Velocidad Media por Provincia (Top 6)",
                      height=400)  # Ajusta la altura del gráfico
 
-    # Mostrar KPIs como tarjetas
-    kpi1_result = kpi_1(df_provincias)  # Asegúrate de que kpi_1 devuelva un valor
-    kpi2_result = kpi2(df_velocidades)  # Asegúrate de que kpi2 devuelva un valor
+    # Mostrar gráficos adicionales
+    st.subheader("Otros Gráficos")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.metric(label="KPI 1: Crecimiento de Accesos", value=kpi1_result)
-    
-    with col2:
-        st.metric(label="KPI 2: Crecimiento de Velocidades Promedio", value=kpi2_result)
-
-    # Mostrar gráficos distribuidos en una sola columna con tamaño ajustado
-    st.plotly_chart(fig_provincias, use_container_width=True)
-    st.plotly_chart(fig_accesos, use_container_width=True)
+    # Gráficos distribuidos en una columna
     st.plotly_chart(fig_ingresos, use_container_width=True)
     st.plotly_chart(fig_velocidad, use_container_width=True)
     st.plotly_chart(fig_pie, use_container_width=True)
+
+    # Agregar un resumen o insights clave con formato bonito
+    st.markdown("""
+    <div style="background-color:#f1f1f1; padding:20px; border-radius:10px;">
+        <h2 style="color:#2c3e50;">Resumen e Insights Clave</h2>
+        <p><strong>Resumen:</strong> Este dashboard proporciona una visión integral del acceso a internet en diferentes provincias.</p>
+        <ul>
+            <li><strong>Top 10 Provincias por Tecnología:</strong> Muestra las provincias con el mejor acceso a diferentes tecnologías de internet.</li>
+            <li><strong>Provincias con Menor Promedio:</strong> Identifica las provincias con el menor acceso promedio a las tecnologías seleccionadas.</li>
+            <li><strong>Ingresos:</strong> Detalla cómo los ingresos están cambiando a lo largo del tiempo, analizando los ingresos por año y trimestre.</li>
+            <li><strong>Velocidad Media por Provincia:</strong> Muestra la velocidad media de acceso a internet en las provincias principales.</li>
+            <li><strong>Distribución de Velocidad Media:</strong> Representa la distribución de la velocidad media en las seis provincias principales.</li>
+        </ul>
+        <p><strong>Insights Clave:</strong></p>
+        <ul>
+            <li>Identifica áreas de mejora en el acceso a internet y áreas donde se está logrando un buen rendimiento.</li>
+            <li>Analiza cómo los ingresos están cambiando a lo largo del tiempo y cómo esto puede correlacionarse con el acceso a internet.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
 elif menu == "Dashboard de Provincias":
     st.subheader("Dashboard de Provincias")
@@ -130,7 +163,7 @@ elif menu == "Dashboard de Localidades":
     st.subheader("Dashboard de Localidades")
 
     # Cargar dataset para el dashboard de localidades
-    df_localidades = load_data('Dataset_procesados/Accesos_tecnologia_localidades.csv')  # Cambia el nombre del archivo según corresponda
+    df_localidades = load_data('Dataset_procesados/Accesos_tecnologia_localidades.csv')
     
     # Llamar a la función para mostrar el dashboard de localidades
     localidades_dashboard(df_localidades)

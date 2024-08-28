@@ -6,16 +6,14 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
-# Define la URL de la imagen de fondo
-image_url = '/img/fondo.jpg'  # Asegúrate de que la ruta sea correcta
+# Define el color de fondo
+background_color = "#f0f0f0"  # Un color claro, por ejemplo, gris muy claro
 
-# Estilo CSS para establecer la imagen de fondo
+# Estilo CSS para el color de fondo y el texto
 css = f"""
     <style>
     .main {{
-        background-image: url("{image_url}");
-        background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-        background-position: center; /* Centra la imagen */
+        background-color: {background_color};
         color: #ffffff; /* Texto blanco */
     }}
     .streamlit-expanderHeader {{
@@ -34,6 +32,7 @@ css = f"""
 
 # Agregar el CSS a la aplicación
 st.markdown(css, unsafe_allow_html=True)
+
 
 
 # Menú principal

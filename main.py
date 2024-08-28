@@ -123,7 +123,7 @@ elif menu == "Dashboard Global":
     st.plotly_chart(fig_pie, use_container_width=True)
 
     # Agregar un resumen o insights clave con formato bonito
-    st.markdown("""
+    """
     <div style="background-color:#f1f1f1; padding:20px; border-radius:10px;">
         <h2 style="color:#2c3e50;">Resumen e Insights Clave</h2>
         <p><strong>Resumen:</strong> Este dashboard proporciona una visión integral del acceso a internet en diferentes provincias.</p>
@@ -140,7 +140,7 @@ elif menu == "Dashboard Global":
             <li>Analiza cómo los ingresos están cambiando a lo largo del tiempo y cómo esto puede correlacionarse con el acceso a internet.</li>
         </ul>
     </div>
-    """, unsafe_allow_html=True)
+    """
 
 elif menu == "Dashboard de Provincias":
     st.subheader("Dashboard de Provincias")

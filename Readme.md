@@ -22,17 +22,20 @@ El repositorio está organizado de la siguiente manera:
 
 El Dashboard Global proporciona una visión integral de los datos de telecomunicaciones a nivel nacional. Incluye los siguientes componentes:
 
-- **Top 10 Provincias por Tecnología**: Gráfico de barras que muestra las diez provincias con el mejor acceso a diferentes tecnologías de internet.
+- **Top 10 Provincias por Velocidades**: Gráfico de barras que muestra las diez provincias con el mejor acceso a diferentes tecnologías con Velocidades de internet.
 - **Provincias con Menor Promedio de Acceso**: Gráfico de barras que identifica las provincias con el menor acceso promedio a las tecnologías seleccionadas.
 - **Ingresos por Año y Trimestre**: Gráfico de líneas que detalla los ingresos generados a lo largo del tiempo.
 - **Velocidad Media por Provincia (Top 10)**: Gráfico de barras que muestra la velocidad media de acceso a internet en las diez provincias principales.
 - **Distribución de Velocidad Media por Provincia (Top 6)**: Gráfico de torta que representa la distribución de la velocidad media en las seis provincias principales.
 
-**Predomina**: La visualización que predomina en el Dashboard Global es el gráfico de barras de **"Top 10 Provincias por Tecnología"**, ya que proporciona una visión clara y comparativa del acceso a internet en diferentes provincias.
+**Ejemplos**: 
+![Grafico de Velocidades por Provincia](img/velocidad.png)
 
 ### Dashboard de Provincias
 
 El Dashboard de Provincias ofrece un análisis detallado de los datos a nivel provincial. Incluye gráficos y KPIs específicos para evaluar el comportamiento en cada provincia.
+
+![Grafico de Tecnologias por Provincia](img/tecnologia.png)
 
 ### Dashboard de Localidades
 

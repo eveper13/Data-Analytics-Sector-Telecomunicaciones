@@ -84,11 +84,11 @@ if menu == "Análisis de KPIs":
 elif menu == "Dashboard Global":
     st.subheader("Dashboard Global")
 
-    # Seleccionar Tecnología
+    # Seleccionar Velocidad
     tecnologias = ['HASTA 512 kbps', '+ 512 Kbps - 1 Mbps', '+ 1 Mbps - 6 Mbps', 
                    '+ 6 Mbps - 10 Mbps', '+ 10 Mbps - 20 Mbps', '+ 20 Mbps - 30 Mbps', 
                    '+ 30 Mbps', 'OTROS']
-    tecnologia_seleccionada = st.selectbox("Selecciona la tecnología", tecnologias)
+    tecnologia_seleccionada = st.selectbox("Selecciona la Velocidad", tecnologias)
 
     # Cargar datasets necesarios para el Dashboard Global
     df_accesos_velocidad = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')

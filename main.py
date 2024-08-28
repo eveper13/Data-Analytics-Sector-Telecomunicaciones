@@ -6,19 +6,29 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
-st.markdown(
-    f"""
+# Estilo CSS para el fondo y el texto
+css = """
     <style>
-    .reportview-container {{
-        background: url("img/fondo.jpg");
-        background-size: cover;
-    }}
+    .main {
+        background-color: #007bff; /* Fondo azul */
+        color: #ffffff; /* Texto blanco */
+    }
+    .streamlit-expanderHeader {
+        color: #ffffff; /* Color del texto en los encabezados de los expanders */
+    }
+    .stButton>button {
+        background-color: #0056b3; /* Fondo de los botones */
+        color: white; /* Texto de los botones */
+    }
+    .stTextInput>div>input {
+        background-color: #ffffff; /* Fondo de los campos de entrada */
+        color: #000000; /* Texto en los campos de entrada */
+    }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
 
-
+# Agregar el CSS a la aplicación
+st.markdown(css, unsafe_allow_html=True)
 # Menú principal
 
 st.title("Dashboard De Telecomunicaciones")

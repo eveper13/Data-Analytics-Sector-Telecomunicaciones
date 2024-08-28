@@ -6,25 +6,17 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
-
-def set_background(image_path):
-    with open(image_path, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode()
-
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded_string}");
-            background-size: cover;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-# Set background image
-set_background('img/fondo.jpg') 
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url("img/fondo.jpg");
+        background-size: cover;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # Menú principal

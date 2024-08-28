@@ -22,7 +22,7 @@ def set_background(image_path):
         unsafe_allow_html=True
     )
 
-# función set_background()
+# Set background image
 set_background('img/fondo.jpg') 
 
 # Menú principal
@@ -33,15 +33,18 @@ menu = st.sidebar.radio("Selecciona una opción", ["Análisis de KPIs", "Dashboa
 if menu == "Análisis de KPIs":
     st.subheader("Selecciona el KPI")
 
+    col1, col2 = st.columns(2)
     # Cargar y mostrar KPI 1
-    if st.button("Mostrar KPI 1: Crecimiento de Accesos"):
-        df_provincias = load_data('Dataset_procesados/Penetracion_hogares.csv')
-        kpi_1(df_provincias)
+    with col1:
+        if st.button("Mostrar KPI 1: Crecimiento de Accesos"):
+            df_provincias = load_data('Dataset_procesados/Penetracion_hogares.csv')
+            kpi_1(df_provincias)
 
     # Cargar y mostrar KPI 2
-    if st.button("Mostrar KPI 2: Crecimiento de Velocidades Promedio"):
-        df_velocidades = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')
-        kpi2(df_velocidades)
+    with col2:
+        if st.button("Mostrar KPI 2: Crecimiento de Velocidades Promedio"):
+            df_velocidades = load_data('Dataset_procesados/Accesos_velocidad_Provincia.csv')
+            kpi2(df_velocidades)
 
 elif menu == "Dashboard Global":
     st.subheader("Dashboard Global")
@@ -80,13 +83,13 @@ elif menu == "Dashboard Global":
                            title="Ingresos por Año y Trimestre (2018-2024)",
                            height=400)  # Ajusta la altura del gráfico
 
-    # Gráfico de Velocidad Media por Provincia (10 provincias)
+    # Nuevo gráfico en lugar de líneas de velocidades
     df_velocidad_grouped = df_velocidad.groupby(['Año', 'Trimestre', 'Provincia'])['Mbps (Media de bajada)'].mean().reset_index()
     top_provincias = df_velocidad_grouped['Provincia'].value_counts().head(10).index
     df_velocidad_top = df_velocidad_grouped[df_velocidad_grouped['Provincia'].isin(top_provincias)]
-    fig_velocidad = px.line(df_velocidad_top, x='Trimestre', y='Mbps (Media de bajada)', color='Provincia',
-                            title="Velocidad Media por Provincia (Top 10)",
-                            height=400)  # Ajusta la altura del gráfico
+    fig_velocidad = px.bar(df_velocidad_top, x='Trimestre', y='Mbps (Media de bajada)', color='Provincia',
+                           title="Velocidad Media por Provincia (Top 10)",
+                           height=400)  # Cambiar a gráfico de barras
 
     # Gráfico de Torta para 6 provincias
     top_provincias_for_pie = df_velocidad['Provincia'].value_counts().head(6).index
@@ -95,6 +98,17 @@ elif menu == "Dashboard Global":
     fig_pie = px.pie(df_pie, names='Provincia', values='Mbps (Media de bajada)', 
                      title="Distribución de Velocidad Media por Provincia (Top 6)",
                      height=400)  # Ajusta la altura del gráfico
+
+    # Mostrar KPIs como tarjetas
+    kpi1_result = kpi_1(df_provincias)  # Asegúrate de que kpi_1 devuelva un valor
+    kpi2_result = kpi2(df_velocidades)  # Asegúrate de que kpi2 devuelva un valor
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric(label="KPI 1: Crecimiento de Accesos", value=kpi1_result)
+    
+    with col2:
+        st.metric(label="KPI 2: Crecimiento de Velocidades Promedio", value=kpi2_result)
 
     # Mostrar gráficos distribuidos en una sola columna con tamaño ajustado
     st.plotly_chart(fig_provincias, use_container_width=True)

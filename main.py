@@ -6,29 +6,36 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
-# Estilo CSS para el fondo y el texto
-css = """
+# Define la URL de la imagen de fondo
+image_url = '/img/fondo.jpg'  # Asegúrate de que la ruta sea correcta
+
+# Estilo CSS para establecer la imagen de fondo
+css = f"""
     <style>
-    .main {
-        background-color: #007bff; /* Fondo azul */
+    .main {{
+        background-image: url("{image_url}");
+        background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+        background-position: center; /* Centra la imagen */
         color: #ffffff; /* Texto blanco */
-    }
-    .streamlit-expanderHeader {
+    }}
+    .streamlit-expanderHeader {{
         color: #ffffff; /* Color del texto en los encabezados de los expanders */
-    }
-    .stButton>button {
+    }}
+    .stButton>button {{
         background-color: #0056b3; /* Fondo de los botones */
         color: white; /* Texto de los botones */
-    }
-    .stTextInput>div>input {
+    }}
+    .stTextInput>div>input {{
         background-color: #ffffff; /* Fondo de los campos de entrada */
         color: #000000; /* Texto en los campos de entrada */
-    }
+    }}
     </style>
 """
 
 # Agregar el CSS a la aplicación
 st.markdown(css, unsafe_allow_html=True)
+
+
 # Menú principal
 
 st.title("Dashboard De Telecomunicaciones")

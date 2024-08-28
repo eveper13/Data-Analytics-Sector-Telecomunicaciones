@@ -6,18 +6,31 @@ import base64
 from provincias import provincias_dashboard
 from localidades import localidades_dashboard 
 
-# Define el color de fondo
-background_color = "#f0f0f0"  # Un color claro, por ejemplo, gris muy claro
+# Define el color de fondo y el color del texto
+background_color = "#f0f0f0"  # Gris claro
+text_color = "#000000"  # Texto negro para contraste
 
 # Estilo CSS para el color de fondo y el texto
 css = f"""
     <style>
-    .main {{
+    .css-1d391kg {{
         background-color: {background_color};
-        color: #ffffff; /* Texto blanco */
+        color: {text_color};
     }}
-    .streamlit-expanderHeader {{
-        color: #ffffff; /* Color del texto en los encabezados de los expanders */
+    .css-1v3fvcr {{
+        color: {text_color};
+    }}
+    .css-1l02s6b {{
+        color: {text_color};
+    }}
+    .css-1g5r7md {{
+        color: {text_color};
+    }}
+    .css-ffhzg2 {{
+        color: {text_color};
+    }}
+    .css-10trblm {{
+        color: {text_color};
     }}
     .stButton>button {{
         background-color: #0056b3; /* Fondo de los botones */
@@ -25,14 +38,13 @@ css = f"""
     }}
     .stTextInput>div>input {{
         background-color: #ffffff; /* Fondo de los campos de entrada */
-        color: #000000; /* Texto en los campos de entrada */
+        color: {text_color}; /* Texto en los campos de entrada */
     }}
     </style>
 """
 
 # Agregar el CSS a la aplicación
 st.markdown(css, unsafe_allow_html=True)
-
 
 
 # Menú principal
